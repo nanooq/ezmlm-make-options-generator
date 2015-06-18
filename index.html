@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+	"http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<!-- Man from http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq -->
+<!-- Colorcodes:
+#BCF5A9 grün = Person, die die Mailingliste beantragt muss diese Frage beantworten.
+#BDBDBD grau = Diese Option wird nicht zur Verfügung gestellt
+#F7D358 orange = Optionen, wir eingestellt haben und vom Standard abweichen oder Anmerkungen
+-->
+<title>ezmlm-make-options-generator</title>
+<style type="text/css">
+<!--
+body {background: white; color: black;}
+form {margin: 0;}
+h1 {font-family: Arial, sans-serif; line-height: 0.85em; border-bottom: 2px solid;
+  margin-bottom: 0.33em; padding-bottom: 0;}
+
+textarea {background: #EEF;}
+
+#footer {border-top: 1px solid #000; color: #999; font: italic 75% sans-serif;}
+#footer p {margin: 0 0 1em 0;}
+#footer img {float: right; margin: 0 0 0.5em 2em;}
+-->
+</style>
+<script type="text/javascript">
+function generiere() {
+var listname=(document.getElementById('listname').value);
+var domainname=(document.getElementById('domainname').value);
+// var e1=(document.getElementById('-+').checked)?"-+ ":"";
+var a=(document.getElementById('a').checked)?document.getElementById('a').value:document.getElementById('a').value.toUpperCase();
+var b=(document.getElementById('b').checked)?document.getElementById('b').value:document.getElementById('b').value.toUpperCase();
+// No c needed anymore
+// c takes arg!
+// var c=(document.getElementById('c').checked)?"c":" -C arg ";
+var d=(document.getElementById('d').checked)?document.getElementById('d').value:document.getElementById('d').value.toUpperCase(); 
+var f=(document.getElementById('f').checked)?document.getElementById('f').value:document.getElementById('f').value.toUpperCase();
+var g=(document.getElementById('g').checked)?document.getElementById('g').value:document.getElementById('g').value.toUpperCase();
+var h=(document.getElementById('h').checked)?document.getElementById('h').value:document.getElementById('h').value.toUpperCase();
+var i=(document.getElementById('i').checked)?document.getElementById('i').value:document.getElementById('i').value.toUpperCase();
+var j=(document.getElementById('j').checked)?document.getElementById('j').value:document.getElementById('j').value.toUpperCase();
+var l=(document.getElementById('l').checked)?document.getElementById('l').value:document.getElementById('l').value.toUpperCase();
+var m=(document.getElementById('m').checked)?document.getElementById('m').value:document.getElementById('m').value.toUpperCase();
+var n=(document.getElementById('n').checked)?document.getElementById('n').value:document.getElementById('n').value.toUpperCase();
+var o=(document.getElementById('o').checked)?document.getElementById('o').value:document.getElementById('o').value.toUpperCase();
+var p=(document.getElementById('p').checked)?document.getElementById('p').value:document.getElementById('p').value.toUpperCase();
+var r=(document.getElementById('r').checked)?document.getElementById('r').value:document.getElementById('r').value.toUpperCase();
+var s=(document.getElementById('s').checked)?document.getElementById('s').value:document.getElementById('s').value.toUpperCase();
+// t need trailer text
+var t=(document.getElementById('t').checked)?document.getElementById('t').value:document.getElementById('t').value.toUpperCase();
+var u=(document.getElementById('u').checked)?document.getElementById('u').value:document.getElementById('u').value.toUpperCase();
+var x=(document.getElementById('x').checked)?document.getElementById('x').value:document.getElementById('x').value.toUpperCase();
+var y=(document.getElementById('y').checked)?document.getElementById('y').value:document.getElementById('y').value.toUpperCase();
+// -3 fromarg 
+var opt3=(document.getElementById('3').checked)?" -3 fromarg ":"";
+// -5 owner@host 
+var opt5=(document.getElementById('5').checked)?" -5 owner@host":"";
+//var moderatoren=encodeURIComponent(document.getElementById('moderatoren').value);
+var moderatoren=document.getElementById('moderatoren').value;
+//ezmlm-make -+ -$Optionen ~/Maillist/$listname ~/.qmail-$listname $listname stuni-siegen.de # Optionen 
+// Create List
+var output = "ezmlm-make ~/Maillist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
+output = output + "ezmlm-make -+ -C /etc/ezmlm/de -"/* +e1+*/+a+b+d+f+g+h+i+j+l+m+n+o+p+r+s+t+u+x+y+opt3+opt5 + " ~/Maillist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
+output = output + "ezmlm-sub ~/Maillist/" + listname + " mod " + moderatoren + "\n\n";
+output = output + "ezmlm-sub ~/Maillist/" + listname + " " + moderatoren; 
+document.getElementById('output').value=output;
+}
+</script>
+</head>
+<body>
+<form onsubmit="return false;">
+<h1>ezmlm-make-options-generator</h1>
+<p>Hallo,</p>
+<p>diese Seite hilft dir deine Optionen für deine Mailingliste zu finden. 
+<ul>
+<li style="background-color:#BCF5A9;">Die grün hinterlegten Fragen solltest du auf jeden Fall beantworten!</li>
+<li style="background-color:#F7D358;">Bei den orange hinterlegten Fragen handelt es sich um Fragen, bei denen wir von den ezmlm-Empfehlungen abweichen. Oder es sind wichtige Anmerkungen.</li>
+<li style="background-color:#BDBDBD;">Die grau hinterlegten Fragen sind von ezmlm nicht mehr verfügbar und dienen hier nur der Vollständigkeit. Nerdalarm!</li>
+</ul>
+Klick dir die gewünschten Optionen, wir haben unsere Empfehlung voreingestellt. Danach klicke den Button und hacke die Befehle in die Kommandozeile oder schicke sie der Administratorin deines Vertrauen. 
+</p>
+<p>Wenn du eine Frage zur Funktionsweise dieser Seite hast, schick mir einfach eine <a href="mailto:ezmlm-make-options-generator@nanooq.org">E-Mail</a>.
+
+<h2>Eigenschaften deiner Mailingliste</h2>
+
+<p style="background-color:#BCF5A9;">Um welche Mailingliste geht es? Oder, wie soll sie heißen? Nur den Teil vor dem Domainnamen.<br /><textarea cols="80" rows="1" id="listname"></textarea><br />
+
+<p style="background-color:#BCF5A9;">Um welchen Domainnamen geht es?<br /><textarea cols="80" rows="1" id="domainname"></textarea><br />
+
+<!--<p style="background-color:#BCF5A9;">Willst du die Eigenschaften einer bereits bestehende Mailingliste verändern? <input type="checkbox" id="-+" value="-+"><br />-->
+
+<p style="background-color:#BCF5A9;">Nachrichten archivieren? <input type="checkbox" id="a" value="a" checked autocomplete="off"><br />
+<small><B>-a</B> (Default.) Archived and configured with <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-get.1.html">ezmlm-get</A>(1)</B> for archive access. <B>ezmlm-make</B> will touch <I>dir</I><B>/archived</B> and <I>dir</I><B>/indexed</B> so that <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-send.1.html">ezmlm-send</A>(1)</B> will archive new messages. <B>-A</B> Not archived.</small></p>
+
+<p style="background-color:#BCF5A9;">Archivzugang blockieren (Nur Moderatorinnen kommen dran)? <input type="checkbox" id="b" value="b" autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Archivzugang erleichtert das Einarbeiten und erhöht die Nachvollziehbarkeit und Transparenz.</span> <B>-b</B> Block archive. Only moderators are allowed to access the archive. <B>-B</B> (Default.) Archive access is open to anyone or subscribers only, depending on the <B>-g</B> switch.</small></p>
+
+<p style="background-color:#BDBDBD;"><!--Eigene Config-Datei nutzen? <input type="checkbox" id="c" value="c"><br />-->
+<small><B>-c</B> Config. Use <I>.ezmlmrc</I> (see CONFIGURATION) from the directory where <I>dot</I> resides. <B>ezmlm-make</B> otherwise uses the system wide ezmlmrc file (normally <I>/etc/ezmlm/default/ezmlmrc</I>). The <B>-c</B> switch may cause you to execute <B>ezmlm-make</B> based on a configuration file controlled by another user. <B>ezmlm-make</B> does not allow periods in any tag to restrict all actions to within <I>dir</I>. Be careful with this option setting up lists for other users, especially when running <B>ezmlm-make</B> as root. <B>-C</B><I> arg</I>: Like<B>-c</B>, but use file <I>arg</I> as the ezmlmrc file. Use <B>-C</B><I> ''</I> to override a default when using <B>-+</B> or <B>-e</B>. If the given path is a directory instead of a file, the actual ezmlmrc file is taken as <I>arg/ezmlmrc</I>, 
+and the other ezmlm-idx programs will use the directory to look up files (such as text files) that are not present in the list directory.</small></p>
+
+<p style="background-color:#BCF5A9;">Automatische Sammlungen erstellen? <input type="checkbox" id="d" value="d"  autocomplete="off"><br />
+<small>Digest. <B>ezmlm-make</B> will set up the <I>local</I><B><A HREF="mailto:-digest@host">-digest@host</A></B> digest list to disseminate digest of the list messages. By default, this is done when 30 messages, 48 hours, or 64 kbytes of message body text have accumulated since the last digest. Edit the
+<I>dir</I><B>/digcount</B>, <I>dir</I><B>/digsize</B>, or <I>dir</I><B>/digtime</B> files to override these defaults.  See <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-tstdig.1.html">ezmlm-tstdig</A>(1)</B> and <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-get.1.html">ezmlm-get</A>(1)</B> for more info. <B>-D</B>: (Default.) No digest. Do not set up the digest list.</small></p>
+
+<p style="background-color:#BDBDBD;"><!--Bestehende Mailingliste verändern? <input type="checkbox" id="e" value="e" autocomplete="off"><br />
+--><small>Edit. <B>ezmlm-make</B> will remove links before creating them and accept if directories to be created are already present. will also (via entries in <I>ezmlmrc</I>) remove flags that are present but not desired for the current list. Thus, this option can be used to reconfigure existing lists without affecting moderator and subscriber lists or message archive. All desired <B>ezmlm-make</B> switches
+need to be specified. To make all switches sticky, i.e. only specify the ones changed from the previous setup, use <B>-+</B>. Command line arguments other than <I>dir</I> can be omitted. In the unlikely case where <I>dot</I> is changed, you must manually remove the old links. Mail can arrive at any time! For safe editing, turn on the sticky bit of the home directory before using the edit function, then turn it off again (see <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man5/dot-qmail.5.html">dot-qmail</A>(5)</B>). <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man5/ezmlmrc.5.html">ezmlmrc</A>(5)</B> is set up so that most text files (and <I>DIR</I><B>/headeradd</B>, <I>DIR</I><B>/headerkeep</B>, 
+and <I>DIR</I><B>/headerremove</B>) are not overwritten if they already exist so as to preserve manual customizations. If <I>local</I> is specified <B>ezmlm-make</B> overrides this behavior and all files are rewritten. You can also force <B>ezmlm-make</B> to rewrite all files by using <B>-ee</B>. <B>-E</B>: (Default.) No edit. <B>ezmlm-make</B> will abort if directories or links to be created already exist. This prevents accidental reconfiguration of a pre-existing list, since the first action is to create the list directory.</small></p>
+
+<p style="background-color:#BCF5A9;">Name der Mailingliste als Prefix in die Betreffzeile schreiben? <input type="checkbox" id="f" value="f" checked autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Bei Prefixen in der Betreffzeile erhält man direkt mehr Kontext.</span> Prefix. <B>ezmlm-make</B> will set up the list so that the outgoing subject will be prefixed with the list name. <B>-F</B> (Default.) No prefix.</small></p>
+
+<p style="background-color:#BCF5A9;">Archivzugang nur für Mitgliederinnen der Mailingliste? <input type="checkbox" id="g" value="g" autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Anmerkung: Wenn du oben das Archiv für die ganze Welt offen gelassen hast, kannst du hier noch erwägen, ob der Zugriff auf das Archiv nur für Menschen von der Liste gelten soll.</span> Guard archive. Archive access requests from unrecognized SENDERs will be rejected. This restriction is safe, since replies are sent to the SENDER address. <B>-G</B> (Default.) Do not guard archive. Archive access request from any SENDER will be serviced.</small></p>
+
+<p style="background-color:#BCF5A9;">Darf jede jede in die Mailingliste setzen? <input type="checkbox" id="h" value="h" autocomplete="off"><br />
+<small>Help subscription. Subscriptions do not require confirmation. Strongly recommended against, since anyone can subscribe any address, but may be useful for some subscription moderated lists. <B>-H</B> (Default.) Subscription requires confirmation by reply to a message sent to the subscription address.</small></p>
+
+<p>Soll ein Index für das Archiv geführt werden um es über das WWW zu erreichen? <input type="checkbox" id="i" value="i" checked autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Wenn irgendwann ein WWW-Zugriff steht, wäre ein Index ganz schön.</span> <B>-i</B> Indexed for WWW archive access. <B>ezmlm-make</B> will create the list so that <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-archive.1.html">ezmlm-archive</A>(1)</B> is invoked to maintain an index suitable for use by <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-cgi.1.html">ezmlm-cgi</A>(1)</B>. <B>-I</B> (Default.) The list is created without <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-archive.1.html">ezmlm-archive</A>(1)</B>.</small></p>
+
+<p>Kann man sich ohne weitere Bestätigung austragen? <input type="checkbox" id="j" value="j" autocomplete="off"><br /> <small>Jump off. Unsubscribe does not require confirmation. Strongly recommended against, since anyone can unsubscribe any address, but may be useful in some situations. <B>-J</B> (Default.) Unsubscribe requires confirmation by a reply to a message sent to the subscription address.</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-k</B> <B>-K</B> Ignored for backwards compatibility. The <I>dir</I><B>/deny/</B> subscribers directory is always created to allow denying messages from selected addresses. This is useful in combination with the <B>-u</B> switch to temporarily restrain offenders, such as misconfigured auto-responders or automatic spammers. It can also be used in combination with <B>-m</B> to filter out SENDERs from whom the moderators do not want to see posts (again, bad re-mailers and spammers come to mind). To add/remove blacklisted addresses: <B>ezmlm-sub </B><I>dir </I><B>deny </B><I><A HREF="mailto:bad@host">bad@host</A></I> / <B>ezmlm-unsub </B><I>dir </I><B>deny </B><I><A HREF="mailto:bad@host">bad@host</A></I></small></p>
+
+<p style="background-color:#BCF5A9;">Dürfen Moderatorinnen die Mitgliederliste einsehen? <input type="checkbox" id="l" value="l" checked autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Mindestens die Moderatorinnen sollten die Liste einsehen dürfen.</span> <B>-l</B> <B>ezmlm-make</B> sets up the list so that remote administrators can request a subscriber list, and search the subscriber log. <B>-L</B> (Default.) The subscriber list cannot be obtained.</small></p>
+
+<p style="background-color:#BCF5A9;">Nachrichten, bevor sie auf die Liste gelangen, von einer Moderatorin moderierien? <input type="checkbox" id="m" value="m" autocomplete="off"><br />
+<small><B>-m</B> Message moderation. (Please note that the <B>-u switch modifies</B> the action of this switch.) <B>ezmlm-make</B> will touch <I>dir</I><B>/modpost</B> and create <I>dir</I><B>/mod/</B> and 
+<I>dir</I><B>/mod/subscribers/</B>, where the moderator addresses are stored. <B>ezmlm-make</B> also creates <I>dir</I><B>/mod/pending/</B>, <I>dir</I><B>/mod/accepted/</B>, and <I>dir</I><B>/mod/rejected/</B>. These directories are used to queue messages awaiting moderation. <I>dir</I><B>/editor</B> will be set up to run <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-store.1.html">ezmlm-store</A>(1)</B> to store incoming messages in the moderation queue and send moderation requests to the moderators. <I>dir</I><B>/moderator</B> will be set up to run <B>ezmlm-moderate</B> to process moderator
+<I>accept</I> or <I>reject</I> requests. To add/remove moderators: <B>ezmlm-sub </B><I>dir </I><B>mod </B><I><A HREF="mailto:moderator@host">moderator@host</A></I> / <B>ezmlm-unsub </B><I>dir </I><B>mod </B><I><A HREF="mailto:moderator@host">moderator@host</A></I>. <B>-M</B> (Default.) Message posting is not moderated.</small></p>
+
+<p>Dürfen Moderatoren Textdateien ändern? <input type="checkbox" id="n" value="n" autocomplete="off"><br />
+<small><B>-n</B> New text file. <B>ezmlm-make</B> sets up the list to allow remote administrators to edit files in <I>dir</I><B>/text/</B>. <B>-N</B> (Default.) Not new text file. Text file editing not allowed.</small></p>
+
+<p style="background-color:#BCF5A9;">Nur Moderatoren dürfen auf die Liste schreiben? <input type="checkbox" id="o" value="o" autocomplete="off"><br />
+<small><B>-o</B> Others rejected. Posts from addresses other than moderators are rejected. This is applicable to message moderated lists only (see <B>-m</B>). The switch has no effect on other lists. <B>-O</B> (Default.) Others not rejected. For moderated lists, all posts are forwarded to the moderators. The switch has effects only on message moderated lists. </small></p>
+
+<p>Rudimentäre Selbstverwaltung durch die Benutzerin möglich? <input type="checkbox" id="p" value="p" checked autocomplete="off"><br />
+<small><B>p</B> (Default.) Public. <B>ezmlm-make</B> will touch <I>dir</I><B>/public</B>, so that <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-manage.1.html">ezmlm-manage</A>(1)</B> will respond to administrative requests and <B>ezmlm-get</B> will allow archive retrieval. <B>-P</B> Private.<B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-manage.1.html">ezmlm-manage</A>(1)</B> and<B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-get.1.html">ezmlm-get</A>(1)</B> will allow only digest creation, remote administration, and archive
+retrieval by remote administrators, (if the list is configured with these options).</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-q</B> <B>-Q</B> Ignored for backwards compatibility. The request address is always
+serviced. Commands sent in the subject to <I>local</I><B>-request@</B><I>host</I> are processed by
+<B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-request.1.html">ezmlm-request</A>(1)</B>.</small></p>
+
+<p>Moderatorinnen können per E-Mail-Kommandos moderieren? <input type="checkbox" id="r" value="r" checked autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Mit dieser Option kann sich die Mailingliste besser selber verwalten ohne den Mailinglistenmoderatoren bemühen zu müssen.</span> <B>-r</B> Remote admin. <B>ezmlm-make</B> enables remote administration by touching <I>dir</I><B>/remote</B>. Moderator(s) can unsubscribe and subscribe any address. See the <B>-m</B> option on how moderator addresses are stored and manipulated. <B>-R</B> (Default.) No remote administration.</small></p>
+
+<p style="background-color:#BCF5A9;">Muss das Beitreten in die Liste von einer Moderatorin geprüft werden? <input type="checkbox" id="s" value="s" autocomplete="off"><br />
+<small><B>-s</B> Subscription moderation. <B>ezmlm-make</B> enables subscription moderation by touching
+<I>dir</I><B>/modsub</B>. This affects subscriptions for both the main list and the digest list. See the
+<B>-m</B> option on how moderator addresses are stored and manipulated. <B>-S</B> (Default.) Subscriptions are not moderated.</small></p>
+
+<p  style="background-color:#BCF5A9;">Einen Fußtext den Nachrichten anfügen? <input type="checkbox" id="t" value="t" checked autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Ein Fußtext ergibt Sinn. Wir wollen in der Fußzeile zum Wikiartikel über Mailinglisten verlinken. Wenn du mehr Text haben willst, musst du ihn uns natürlich schicken.</span> <B>-t</B> Trailer. <B>ezmlm-make</B> will create <I>dir</I><B>/text/trailer</B> to set up the list to add a trailer to outgoing messages. <B>-T</B> No trailer. (Default.)</small></p>
+
+<p style="background-color:#BCF5A9;">Dürfen nur Mitglieder und Moderatorinen auf die Liste posten? <input type="checkbox" id="u" value="u" autocomplete="off"><br />
+<small><B>-u</B> User posts only. <B>ezmlm-make</B> sets up the list so that posts and archive access is restricted to subscribers. These are addresses subscribed to the main list, the digest, or added
+manually to the address database in <I>dir</I><B>/allow/</B> which accommodates addresses from e.g. subscribers working from an address other than their subscriber address. Posts from unrecognized SENDER addresses will be rejected. This is relatively easily defeated for posts. More secure alternatives are message moderated lists configured with the <B>ezmlm-make -m</B> switch (without the <B>-u</B> switch). There is no reason to combine of SENDER checks on posts with message moderation. Therefore, the combination of the <B>-u</B> switch with the <B>-m</B> switch is used for a configuration with SENDER restrictions (like with <B>-u</B> alone), with the difference that posts from non-subscribers will be sent for moderation instead of being rejected. <span style="background-color:#F7D358;">Wenn du -m und -u aktivierst, dann werden alle internen Nachrichten gepostet und externe Nachrichten moderiert</span>. This allows the list admin to let non-subscribers post occasionally, as well as to catch subscribers posting from non-subscriber addresses. <B>-U</B> (Default.) Do not restrict posts based on SENDER address.</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-v</B> Display <B>ezmlm-make</B> version information. <B>-V</B> Display <B>ezmlm-make</B> version information.</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-w</B> Remove the <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-warn.1.html">ezmlm-warn</A>(1)</B> invocations from the list setup. It is assumed that <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-warn.1.html">ezmlm-warn</A>(1)</B> for both <I><A HREF="mailto:local@host">local@host</A></I> and <I>local</I><B>-digest@</B><I>host</I> will be run by other means, such as crond. As the main list will have only sublists as subscribers, it is desirable to log bounces and feedback messages rather than to remove a bouncing subscriber. <B>-W</B> (Default.) No address restriction. Normal use of <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-warn.1.html">ezmlm-warn</A>(1)</B> and <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-return.1.html">ezmlm-return</A>(1)</B>.</small></p>
+
+<p>Anhänge entfernen? <input type="checkbox" id="x" value="x" autocomplete="off"><br /> 
+<small><B>-x</B> eXtra. <B>ezmlm-make</B> will configure the list with a few extras: <I>dir</I><B>/mimeremove</B> will be configured to strip annoying mime parts such as excel spreadsheets, rtf text, html text etc from the messages. Messages consisting solely of this Content-type will be rejected. See <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-send.1.html">ezmlm-send</A>(1)</B> and <B><A HREF="http://gd.tuwien.ac.at/infosys/mail/qmail/ezfaq/man1/ezmlm-reject.1.html">ezmlm-reject</A>(1)</B> for more info.</small></p>
+
+<p>Muss die Senderin ihre Posts jedes Mal bestätigen? <input type="checkbox" id="y" value="y" autocomplete="off"><br /> 
+<small><B>-y</B> sender confirmation. <B>ezmlm-make</B> will configure the list so posting requires sender confirmation. <B>-Y</B> (Default.) No sender confirmation is required.</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-0 </B><I><A HREF="mailto:mainlist@host">mainlist@host</A></I>Make the list a sublist of list <I><A HREF="mailto:mainlist@host">mainlist@host</A></I>.</small></p>
+
+<p>In den Nachrichten "Von" ersetzen? <input type="checkbox" id="3" value="3" autocomplete="off"><br />
+<small><span style="background-color:#F7D358;">Hier geht es vornehmlich um Senderanonymität</span>. <B>-3 </B><I>fromarg</I> <B>ezmlm-make</B>sets up the list to replace the ``From:'' header of the message with ``From: <I>fromarg</I>''.</small></p>
+
+<p>E-Mails nur an die Besitzerin der Maillingliste schicken? <input type="checkbox" id="5" value="5" autocomplete="off"><br /><small><B>-5 </B><I><A HREF="mailto:owner@host">owner@host</A></I> <B>ezmlm-make</B> will configure the list to forward mail directed to the list owner to <I><A HREF="mailto:owner@host">owner@host</A></I>.</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-6</B><I>&nbsp;plugin:host:port:user:password:datab:table</I> Subscriber database info. Use the database plugin named <I>plugin</I> which connects to <I>host</I> (default localhost), on port number <I>port</I> (default port for SQL server) as <I>user</I> with <I>password</I> using database <I>datab</I> (default &quot;ezmlm&quot;) and the table root name <I>table</I> (default &quot;ezmlm&quot;)</small></p>
+
+<p style="background-color:#BDBDBD;"><small> <B>-7 </B><I>/msg_mod_path</I>Make <I>/path</I> the path to the database for message moderators, if the list is set up for message moderation. <I>/msg_mod_path</I> must be an absolute pathname, starting with a slash. If not, it will be ignored.</small></p> 
+
+<p style="background-color:#BDBDBD;"><small><B>-8 </B><I>/sub_mod_path</I> Make <I>/sub_mod_path</I> the path to the database for subscription moderators, if the list is set up for subscription moderation. <I>/sub_mod_path</I> must be an absolute pathname, starting with a slash. If not, it will be ignored.
+</small></p>
+
+<p style="background-color:#BDBDBD;"><small><B>-9 </B><I>/rem_adm_path</I> Make <I>/path</I> the path to the database for remote administrators, if the list is set up for remote administration. <I>/rem_adm_path</I> must be an absolute pathname, starting with a slash. If not, it will be ignored. </DL> <A NAME="lbAG">&nbsp;</A></small></p>
+
+<p style="background-color:#BCF5A9;"><small>Wie lauten die E-Mailadressen der Moderatoren (Mindestens eine Adresse. Komma-getrennt)?<br />
+<textarea cols="80" rows="1" id="moderatoren" autocomplete="off"></textarea><br /></small></p>
+
+<p><input type="button" onclick="generiere()" value="Generiere Optionskette"><br />
+<textarea cols="80" rows="8" id="output"></textarea><br />
+Beschreibung, was die Zeilen bedeuten: 
+<ol>
+	<li>Erstellen der Mailingliste im Ordner ~/Maillist.</li>
+	<li>Deine geklickten Optionen auf die Mailingliste anwenden.</li>
+	<li>Die Moderatoren zur Liste der Moderatoren hinzufügen.</li>
+	<li>Deine Moderatoren zur Mailingliste selber hinzufügen.</li>
+</ol>
+</form>
+
+<div id="footer">
+<img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights.gif">
+<p>
+<br>
+The ezmlm-make-options-generator is licensed under a Creative Commons <a href="http://creativecommons.org/licenses/by-sa/2.0/" rel="license">Attribution-ShareAlike 2.0</a> License.
+</p>
+<p>
+This tool is provided without warranty, guarantee, or much in the way of explanation.  Note that use of this tool may or may not crash your browser, lock up your machine, erase your hard drive, or e-mail those naughty pictures you hid in the Utilities folder to your mother.  Don't blame me if anything bad happens to you, because it's actually the aliens' fault.  The code expressed herein is solely that of the author, and he's none too swift with the JavaScript, if you know what we mean, so it's likely to cause giggle fits in anyone who knows what they're doing.  Not a flying toy. Thank you for playing.  Insert coin to continue.
+</p>
+</body>
+</html>
+
