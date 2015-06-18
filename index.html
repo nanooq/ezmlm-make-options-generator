@@ -52,8 +52,7 @@ var t=(document.getElementById('t').checked)?document.getElementById('t').value:
 var u=(document.getElementById('u').checked)?document.getElementById('u').value:document.getElementById('u').value.toUpperCase();
 var x=(document.getElementById('x').checked)?document.getElementById('x').value:document.getElementById('x').value.toUpperCase();
 var y=(document.getElementById('y').checked)?document.getElementById('y').value:document.getElementById('y').value.toUpperCase();
-// -3 fromarg 
-var opt3=(document.getElementById('3').checked)?" -3 fromarg ":"";
+var opt3=(document.getElementById('opt3').checked)?" -3 ":"";
 // -5 owner@host 
 var opt5=(document.getElementById('5').checked)?" -5 owner@host":"";
 //var moderatoren=encodeURIComponent(document.getElementById('moderatoren').value);
@@ -174,7 +173,7 @@ manually to the address database in <I>dir</I><B>/allow/</B> which accommodates 
 
 <p style="background-color:#BDBDBD;"><small><B>-0 </B><I><A HREF="mailto:mainlist@host">mainlist@host</A></I>Make the list a sublist of list <I><A HREF="mailto:mainlist@host">mainlist@host</A></I>.</small></p>
 
-<p>In den Nachrichten "Von" ersetzen? <input type="checkbox" id="3" value="3" autocomplete="off"><br />
+<p>In den Nachrichten "Von" ersetzen? <input type="checkbox" id="opt3" value="3" autocomplete="off"><br />
 <small><span style="background-color:#F7D358;">Hier geht es vornehmlich um Senderanonymität</span>. <B>-3 </B><I>fromarg</I> <B>ezmlm-make</B>sets up the list to replace the ``From:'' header of the message with ``From: <I>fromarg</I>''.</small></p>
 
 <p>E-Mails nur an die Besitzerin der Maillingliste schicken? <input type="checkbox" id="5" value="5" autocomplete="off"><br /><small><B>-5 </B><I><A HREF="mailto:owner@host">owner@host</A></I> <B>ezmlm-make</B> will configure the list to forward mail directed to the list owner to <I><A HREF="mailto:owner@host">owner@host</A></I>.</small></p>
