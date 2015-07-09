@@ -59,7 +59,8 @@ var opt5=(document.getElementById('5').checked)?" -5 owner@host":"";
 var moderatoren=document.getElementById('moderatoren').value;
 //ezmlm-make -+ -$Optionen ~/Maillist/$listname ~/.qmail-$listname $listname stuni-siegen.de # Optionen 
 // Create List
-var output = "ezmlm-make ~/Maillist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
+var output = "mkdir ~/Mailinglist\n\n";
+output = output + "ezmlm-make ~/Mailinglist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
 output = output + "ezmlm-make -+ -C /etc/ezmlm/de -"/* +e1+*/+a+b+d+f+g+h+i+j+l+m+n+o+p+r+s+t+u+x+y+opt3+opt5 + " ~/Maillist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
 output = output + "ezmlm-sub ~/Maillist/" + listname + " mod " + moderatoren + "\n\n";
 output = output + "ezmlm-sub ~/Maillist/" + listname + " " + moderatoren; 
