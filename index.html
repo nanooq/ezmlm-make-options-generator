@@ -57,13 +57,13 @@ var opt3=(document.getElementById('opt3').checked)?" -3 " + document.getElementB
 var opt5=(document.getElementById('5').checked)?" -5 owner@host":"";
 //var moderatoren=encodeURIComponent(document.getElementById('moderatoren').value);
 var moderatoren=document.getElementById('moderatoren').value;
-//ezmlm-make -+ -$Optionen ~/Maillist/$listname ~/.qmail-$listname $listname stuni-siegen.de # Optionen 
+//ezmlm-make -+ -$Optionen ~/Mailinglist/$listname ~/.qmail-$listname $listname stuni-siegen.de # Optionen 
 // Create List
 var output = "mkdir ~/Mailinglist\n\n";
 output = output + "ezmlm-make ~/Mailinglist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
-output = output + "ezmlm-make -+ -C /etc/ezmlm/de -"/* +e1+*/+a+b+d+f+g+h+i+j+l+m+n+o+p+r+s+t+u+x+y+opt3+opt5 + " ~/Maillist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
-output = output + "ezmlm-sub ~/Maillist/" + listname + " mod " + moderatoren + "\n\n";
-output = output + "ezmlm-sub ~/Maillist/" + listname + " " + moderatoren; 
+output = output + "ezmlm-make -+ -C /etc/ezmlm/de -"/* +e1+*/+a+b+d+f+g+h+i+j+l+m+n+o+p+r+s+t+u+x+y+opt3+opt5 + " ~/Mailinglist/" + listname + " ~/.qmail-" + listname + " " + listname + " " + domainname + "\n\n";
+output = output + "ezmlm-sub ~/Mailinglist/" + listname + " mod " + moderatoren + "\n\n";
+output = output + "ezmlm-sub ~/Mailinglist/" + listname + " " + moderatoren; 
 document.getElementById('output').value=output;
 }
 </script>
@@ -195,7 +195,7 @@ manually to the address database in <I>dir</I><B>/allow/</B> which accommodates 
 <textarea cols="80" rows="8" id="output"></textarea><br />
 Beschreibung, was die Zeilen bedeuten: 
 <ol>
-	<li>Erstellen der Mailingliste im Ordner ~/Maillist.</li>
+	<li>Erstellen der Mailingliste im Ordner ~/Mailinglist.</li>
 	<li>Deine geklickten Optionen auf die Mailingliste anwenden.</li>
 	<li>Die Moderatoren zur Liste der Moderatoren hinzufügen.</li>
 	<li>Deine Moderatoren zur Mailingliste selber hinzufügen.</li>
